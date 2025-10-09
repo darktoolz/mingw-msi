@@ -15,7 +15,6 @@ runs:
     - name: 
       shell: bash
       run: |
-        echo "https://api.github.com/repos/${{ inputs.repo }}/releases/latest"
         echo "release_version=" >> $GITHUB_OUTPUT
         curl -sL --no-progress-bar \
           -H "Accept: application/vnd.github+json" \
