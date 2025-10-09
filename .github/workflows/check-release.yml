@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: getter
+      - id: getter
         uses: ./.github/actions/get-release
         with:
           token: "${{ github.token }}"
