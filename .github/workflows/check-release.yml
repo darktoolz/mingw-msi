@@ -15,4 +15,4 @@ jobs:
           repo: brechtsanders/winlibs_mingw
       - name: printer
         run: |
-          echo "release_version: ${{ steps.getter.outputs.release_version }}"
+          echo "release_version: ${{ steps.get_release.outputs.release_version }}"
