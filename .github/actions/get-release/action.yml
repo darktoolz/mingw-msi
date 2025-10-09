@@ -15,7 +15,7 @@ runs:
     - name: 
       shell: bash
       run: |
-        echo "release_version=" >> $GITHUB_OUTPUT
+        echo -n "release_version=" >> $GITHUB_OUTPUT
         curl -sL --no-progress-bar \
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: Bearer ${{ inputs.token }}" \
