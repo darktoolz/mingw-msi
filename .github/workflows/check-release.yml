@@ -1,0 +1,15 @@
+name: Check parent release
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  run-action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/get-release
+        with:
+          token: "${{ github.token }}"
+          repo: "brechtsanders/winlibs_mingw"
