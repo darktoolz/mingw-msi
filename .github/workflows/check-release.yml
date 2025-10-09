@@ -17,3 +17,4 @@ jobs:
         shell: bash
         run: |
           echo "release_version: ${{ steps.getter.outputs.release_version }}"
+          echo "release_version=${{ steps.getter.outputs.release_version }}" >> "$GITHUB_OUTPUT"
