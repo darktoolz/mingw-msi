@@ -14,6 +14,7 @@ runs:
   steps:
     - name: get_release
       id: get_release
+      shell: bash
       run: |
         RELEASE_VERSION=`curl -sL --no-progress-bar \
           -H "Accept: application/vnd.github+json" \
