@@ -7,14 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: 'getter'
-        id: 'getter'
+      - name: getter
+        id: getter
         uses: ./.github/actions/get-release
         with:
           token: "${{ github.token }}"
           repo: "brechtsanders/winlibs_mingw"
-        env:
-          RELEASE_VERSION: ${{ steps.getter.outputs.release_version }} ${{ env.RELEASE_VERSION }} ${{ env.release_version }}
+      - name: saver
+        id: saver
+        run:
+          echo "RELEASE_VERSION=${{ steps.getter.outputs.release_version }} ${{ env.RELEASE_VERSION }} ${{ env.release_version }}" >> $GITHUB_OUTPUT
       - name: 'printer'
         run: |
           echo "release_version: ${{ steps.getter.outputs.release_version }}"
