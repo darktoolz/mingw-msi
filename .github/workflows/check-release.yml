@@ -5,6 +5,8 @@ on:
 jobs:
   release_version:
     runs-on: ubuntu-latest
+    env:
+      release_version: ${{ steps.get_release.outputs.release_version }}
     steps:
       - uses: actions/checkout@v4
       - name: getter
