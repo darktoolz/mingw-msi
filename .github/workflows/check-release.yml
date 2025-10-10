@@ -5,8 +5,6 @@ on:
 jobs:
   release_version:
     runs-on: ubuntu-latest
-    env:
-      RELEASE_VERSION: ${{ steps.get_release.outputs.release_version }}
     steps:
       - uses: actions/checkout@v4
       - name: getter
@@ -15,7 +13,10 @@ jobs:
         with:
           token: ${{ github.token }}
           repo: brechtsanders/winlibs_mingw
+        env:
+          RELEASE_VERSION: ${{ steps.getter.outputs.release_version }}
       - name: printer
         run: |
-          echo 'release_version: ${{ env.release_version }}'
-          echo 'release_version: ${{ steps.get_release.outputs.release_version }}'
+          echo "release_version: ${{ steps.getter.outputs.release_version }}"
+          echo "release_version: ${{ env.RELEASE_VERSION }}"
+          echo "release_version: ${{ env.release_version }}"
