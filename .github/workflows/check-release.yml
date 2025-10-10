@@ -4,6 +4,8 @@ on:
 
 jobs:
   release_version:
+    variables:
+      try: ${RELEASE_VERSION} ${{ RELEASE_VERSION }} ${{ env.RELEASE_VERSION }} ${{ env.release_version }} ${{ steps.get_release.outputs.release_version }} ${{ steps.get_release.outputs.release_version }} ${{ steps.getter.outputs.release_version }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,8 +17,6 @@ jobs:
           repo: "brechtsanders/winlibs_mingw"
 #        env:
 #          RELEASE_VERSION: ${{ steps.getter.outputs.release_version }}
-        variables:
-          try: ${RELEASE_VERSION} ${{ RELEASE_VERSION }} ${{ env.RELEASE_VERSION }} ${{ env.release_version }} ${{ steps.get_release.outputs.release_version }} ${{ steps.get_release.outputs.release_version }} ${{ steps.getter.outputs.release_version }}
       - name: 'printer'
         run: |
           echo "release_version: ${{ steps.getter.outputs.release_version }}"
