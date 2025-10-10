@@ -17,6 +17,7 @@ jobs:
         id: saver
         run:
           echo "RELEASE_VERSION=${{ steps.getter.outputs.release_version }} ${{ env.RELEASE_VERSION }} ${{ env.release_version }}" >> $GITHUB_OUTPUT
+          echo "RELEASE_VERSION=${{ steps.getter.outputs.release_version }} ${{ env.RELEASE_VERSION }} ${{ env.release_version }}" >> $GITHUB_ENV
       - name: 'printer'
         run: |
           echo "release_version: ${{ steps.getter.outputs.release_version }}"
