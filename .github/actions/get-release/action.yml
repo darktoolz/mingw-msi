@@ -9,6 +9,7 @@ inputs:
 outputs:
   release_version:
     description: 'target repo latest release'
+
 runs:
   using: "composite"
   steps:
