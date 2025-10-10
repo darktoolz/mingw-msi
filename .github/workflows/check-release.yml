@@ -13,13 +13,7 @@ jobs:
         with:
           token: "${{ github.token }}"
           repo: "brechtsanders/winlibs_mingw"
-      - name: saver
-        id: saver
-        run:
-          echo "RELEASE_VERSION=1= ${{ steps.getter.outputs.release_version }} 2= ${{ env.RELEASE_VERSION }} 3= ${{ env.release_version }}" >> $GITHUB_OUTPUT
-          echo "RELEASE_VERSION=1= ${{ steps.getter.outputs.release_version }} 2= ${{ env.RELEASE_VERSION }} 3= ${{ env.release_version }}" >> $GITHUB_ENV
       - name: 'printer'
         run: |
-          echo "release_version: ${{ steps.getter.outputs.release_version }}"
-          echo "release_version: ${{ env.RELEASE_VERSION }}"
-          echo "release_version: ${{ env.release_version }}"
+          echo "release_version1: ${{ steps.getter.outputs.release_version }}"
+          echo "release_version2: ${{ env.release_version }}"
