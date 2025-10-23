@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?define ProductName = "Mingw" ?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Id="Darktoolz.Mingw.Msi" Name="$(ProductName)" Manufacturer="Darktoolz" Version="0.0.1">
+    <Property Id="MSIUSEREALADMINDETECTION" Value="1" />
+
+    <StandardDirectory Id="ProgramFiles6432Folder">
+        <Directory Id="INSTALLFOLDER" Name="!(bind.Property.Manufacturer) !(bind.Property.ProductName)">
+            <Directory Id="AppBinDirectory" Name="bin"></Directory>
+        </Directory>
+    </StandardDirectory>
+
+    <ComponentGroup Id="ProductComponents_x64" Directory="INSTALLFOLDER">
+        <Component>
+            <File Source="README.md" />
+            <Environment Name="Path" Value="[AppBinDirectory]" Action="set" Part="first" System="yes" />
+        </Component>
+        <Files Include="source\ucrt64\**"></Files>
+    </ComponentGroup>
+
+
+    <Feature Id="x64_version" Title="x64 version" Description="x64_version components" Level="0" Display="hidden" AllowAdvertise="no">
+		<Level Value="1" Condition="VersionNT64" />
+        <ComponentGroupRef Id="ProductComponents_x64"/>
+    </Feature>
+  </Package>
+</Wix>
